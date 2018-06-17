@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <color name="Sandwich_Background_Color">#FFFBE6</color>
+
+    <style name="sandwich_theme" parent="android:Theme.Light">
+        <item name="android:windowBackground">@color/colorBackground_Orange</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+
+    </style>
+
+
+</resources>

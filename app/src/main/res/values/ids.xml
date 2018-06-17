@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="also_known_label" type="id">also_known_label</item>
+    <item name="TextView" type="id">@+id/TextView</item>
+</resources>

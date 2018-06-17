@@ -1,0 +1,18 @@
+<resources>
+
+    <!-- Base application theme. -->
+
+    <!--Changing the style theme to a light orange background, green text color and cooler font-->
+
+
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+            <item name="android:windowBackground">@color/colorBackground_Orange</item>
+            <item name="android:textColor">@color/colorPrimaryDark</item>
+            <item name="android:textSize">24sp</item>
+            <item name="android:textStyle">bold</item>
+            <item name="android:fontFamily">@font/montserrat_regular</item>
+
+        </style>
+
+</resources>

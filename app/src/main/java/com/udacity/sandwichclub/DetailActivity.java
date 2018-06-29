@@ -1,6 +1,7 @@
 package com.udacity.sandwichclub;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -34,8 +35,7 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-//        loadImageWithPlaceholder():
-//        loadImageWithError():
+//
 
         image = findViewById(R.id.image_iv);
         origin_label = findViewById(R.id.origin_label);
@@ -77,55 +77,66 @@ public class DetailActivity extends AppCompatActivity {
 
     private void closeOnError() {
         finish();
-        Toast.makeText(this, R.string.detail_error_message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.error_message, Toast.LENGTH_SHORT).show();
 
     }
 
+//    private void populateUI(Sandwich sandwich) {
+//        Picasso.with(this)
+//                .load(sandwich.getImage())
+//                .into(image);
+
     private void populateUI(Sandwich sandwich) {
-        Picasso.with(this)
-                .load(sandwich.getImage())
-                .into(image);
+        Picasso.with(this).load(sandwich.getImage()).fit().centerCrop()
+            .placeholder(R.drawable.ic_launcher)
+            .error(R.drawable.ic_launcher_round)
+            .into(image);
 
-//    }
-//        private void loadImageWithError(Sandwich sandwich) {
-//            Picasso
-//                    .with(this)
-//                    .load(sandwich.getImage())
-//                    .error(R.mipmap.ic_launcher_round)
-//                    .into(imageViewError);
+//  Displaying error message when image url does not load
+
+        Picasso.Builder builder = new Picasso.Builder(getApplicationContext());
+        builder.listener(new Picasso.Listener() {
+            @Override
+            public void onImageLoadFailed(Picasso picasso, Uri uri, Exception exception) {
+
+            }
+        });
 
 
-//        }
+   }
+
 
 //       Setting up visibility that displays data from JSON file
 
-        if (sandwich.getPlaceOfOrigin().isEmpty()) {
+if (sandwich.getPlaceOfOrigin().isEmpty()) {
+        origin.setText(R.string.error_message);
 
-            origin_label.setVisibility(View.GONE);
-            origin.setVisibility(View.GONE);
-
-        } else {
-            origin.setText(sandwich.getPlaceOfOrigin());
-        }
+        origin_label.setVisibility(View.GONE);
+        origin.setVisibility(View.GONE);
+    } else {
+        origin.setText(sandwich.getPlaceOfOrigin());
+    }
 
         if (sandwich.getAlsoKnownAs().isEmpty()) {
+         alsoKnown.setText(R.string.error_message);
 
-            alsoKnown_label.setVisibility(View.GONE);
-            alsoKnown.setVisibility(View.GONE);
-        } else {
-            List<String> aka = sandwich.getAlsoKnownAs();
-            String aka_str = TextUtils.join(",", aka);
-            alsoKnown.setText(aka_str);
-
-        }
+        alsoKnown_label.setVisibility(View.GONE);
+        alsoKnown.setVisibility(View.GONE);
+    } else {
+        List<String> aka = sandwich.getAlsoKnownAs();
+        String aka_str = TextUtils.join(", ", aka);
+        alsoKnown.setText(aka_str);
+    }
 
         description.setText(sandwich.getDescription());
 
-        List<String> ing = sandwich.getIngredients();
-        String ing_str = TextUtils.join(",", ing);
+    List<String> ing = sandwich.getIngredients();
+    String ing_str = TextUtils.join(", ", ing);
         ingredients.setText(ing_str);
-
-    }
 }
 
 
+//
+//
+//
+//

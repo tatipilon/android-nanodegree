@@ -16,8 +16,10 @@ public class JsonUtils {
         try {
             JSONObject sandwichJsonObject = new JSONObject(json);
 
-            JSONObject name = sandwichJsonObject.getJSONObject("name");
-            String mainName = name.getString("mainName");
+            //Substituting getString() for optString() method to return empty string when key is not found on JSON Object
+
+            JSONObject name = sandwichJsonObject.optJSONObject("name");
+            String mainName = name.optString("mainName");
             JSONArray alsoKnownAsJsonArray = name.getJSONArray("alsoKnownAs");
             List<String> alsoKnownAs = jsonArrayToStringList(alsoKnownAsJsonArray);
 

@@ -34,6 +34,9 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+//        loadImageWithPlaceholder():
+//        loadImageWithError():
+
         image = findViewById(R.id.image_iv);
         origin_label = findViewById(R.id.origin_label);
         origin = findViewById(R.id.origin_tv);
@@ -83,12 +86,24 @@ public class DetailActivity extends AppCompatActivity {
                 .load(sandwich.getImage())
                 .into(image);
 
+//    }
+//        private void loadImageWithError(Sandwich sandwich) {
+//            Picasso
+//                    .with(this)
+//                    .load(sandwich.getImage())
+//                    .error(R.mipmap.ic_launcher_round)
+//                    .into(imageViewError);
+
+
+//        }
+
 //       Setting up visibility that displays data from JSON file
 
         if (sandwich.getPlaceOfOrigin().isEmpty()) {
 
             origin_label.setVisibility(View.GONE);
             origin.setVisibility(View.GONE);
+
         } else {
             origin.setText(sandwich.getPlaceOfOrigin());
         }

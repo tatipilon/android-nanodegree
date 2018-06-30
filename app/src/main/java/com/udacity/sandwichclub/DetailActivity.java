@@ -1,15 +1,14 @@
 package com.udacity.sandwichclub;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 import com.udacity.sandwichclub.model.Sandwich;
 import com.udacity.sandwichclub.utils.JsonUtils;
@@ -34,8 +33,6 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-
-//
 
         image = findViewById(R.id.image_iv);
         origin_label = findViewById(R.id.origin_label);
@@ -81,10 +78,14 @@ public class DetailActivity extends AppCompatActivity {
 
     }
 
+//    Hiding the previous Picasso call
+
 //    private void populateUI(Sandwich sandwich) {
 //        Picasso.with(this)
 //                .load(sandwich.getImage())
 //                .into(image);
+
+    //  Displaying error message when image url does not load
 
     private void populateUI(Sandwich sandwich) {
         Picasso.with(this).load(sandwich.getImage()).fit().centerCrop()
@@ -92,51 +93,43 @@ public class DetailActivity extends AppCompatActivity {
             .error(R.drawable.ic_launcher_round)
             .into(image);
 
-//  Displaying error message when image url does not load
-
-        Picasso.Builder builder = new Picasso.Builder(getApplicationContext());
-        builder.listener(new Picasso.Listener() {
-            @Override
-            public void onImageLoadFailed(Picasso picasso, Uri uri, Exception exception) {
-
-            }
-        });
-
-
-   }
-
 
 //       Setting up visibility that displays data from JSON file
 
-if (sandwich.getPlaceOfOrigin().isEmpty()) {
-        origin.setText(R.string.error_message);
+        if (sandwich.getPlaceOfOrigin().isEmpty()) {
 
-        origin_label.setVisibility(View.GONE);
-        origin.setVisibility(View.GONE);
-    } else {
-        origin.setText(sandwich.getPlaceOfOrigin());
-    }
+            origin_label.setVisibility(View.GONE);
+            origin.setVisibility(View.GONE);
+
+//       Adding reviewer's suggestion to set text for data not available
+
+            origin.setText(R.string.error_message);
+
+        } else {
+            origin.setText(sandwich.getPlaceOfOrigin());
+        }
 
         if (sandwich.getAlsoKnownAs().isEmpty()) {
-         alsoKnown.setText(R.string.error_message);
 
-        alsoKnown_label.setVisibility(View.GONE);
-        alsoKnown.setVisibility(View.GONE);
-    } else {
-        List<String> aka = sandwich.getAlsoKnownAs();
-        String aka_str = TextUtils.join(", ", aka);
-        alsoKnown.setText(aka_str);
-    }
+            alsoKnown_label.setVisibility(View.GONE);
+            alsoKnown.setVisibility(View.GONE);
+
+            alsoKnown.setText(R.string.error_message);
+
+        } else {
+            List<String> aka = sandwich.getAlsoKnownAs();
+            String aka_str = TextUtils.join(",", aka);
+            alsoKnown.setText(aka_str);
+
+        }
 
         description.setText(sandwich.getDescription());
 
-    List<String> ing = sandwich.getIngredients();
-    String ing_str = TextUtils.join(", ", ing);
+        List<String> ing = sandwich.getIngredients();
+        String ing_str = TextUtils.join(",", ing);
         ingredients.setText(ing_str);
+
+    }
 }
 
 
-//
-//
-//
-//

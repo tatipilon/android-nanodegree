@@ -4,9 +4,12 @@
 
     <!--Changing the style theme to a light orange background, green text color and cooler font-->
 
+    <!-- Changing style to display action bar
 
-    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
-        <!-- Customize your theme here. -->
+    <! Customize your theme here. -->
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+
             <item name="android:windowBackground">@color/colorBackground_Orange</item>
             <item name="android:textColor">@color/colorPrimaryDark</item>
             <item name="android:textSize">24sp</item>

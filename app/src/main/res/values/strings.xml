@@ -10,8 +10,9 @@
     <!-- Content descriptions-->
     <string name="sandwich_picture_content_description">Sandwich picture</string>
 
-    <!-- Error messages-->
-    <string name="detail_error_message">Sandwich data not available</string>
+    <!-- Error message data not available-->
+    <string name="error_message">Data not available</string>
+
 
     <string-array name="sandwich_names">
         <item>Ham and cheese sandwich</item>

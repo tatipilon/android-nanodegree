@@ -7,6 +7,8 @@
     tools:context="com.udacity.sandwichclub.DetailActivity"
     >
 
+<!--Creating a layout suitable for tablets with bigger pictures-->
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

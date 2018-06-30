@@ -45,11 +45,11 @@
             android:paddingTop="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@id/origin_label"
-            app:layout_constraintTop_toTopOf="@id/origin_label"
             android:fontFamily="@font/montserrat_bold"
             android:textColor="@color/colorPrimaryDark"
             android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/origin_label"
+            app:layout_constraintTop_toTopOf="@id/origin_label"
             tools:text = "Origin text"
             />
 
